@@ -1,0 +1,13 @@
+@import "https://fonts.googleapis.com/css2?family=Cal+Sans&family=Outfit:wght@100..900&family=Ultra&display=swap";
+@import "tailwindcss";
+html {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  max-width: 100vw !important;
+  overflow-x: hidden;
+  font-family: Cal Sans, sans-serif;
+  background-color: black;
+}
