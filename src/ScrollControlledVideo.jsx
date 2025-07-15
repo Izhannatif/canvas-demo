@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useNavbar } from "./NavbarContext";
-import PixelTransition from "./CardPixelTransition";
 import { CursorTarget } from "@izhann/react-cursor-fx";
 import ContactForm from "./ContactForm";
 import { ArrowUpRight } from "lucide-react";
@@ -42,6 +41,7 @@ const ScrollGsapVideo = () => {
           onUpdate: (self) => {
             if (self.progress > 0) {
               setIsNavbarVisible(false);
+              setIsNavbarOpen(false);
             } else if (self.progress <= 0) {
               setIsNavbarVisible(true);
               setIsNavbarOpen(false);
@@ -60,6 +60,7 @@ const ScrollGsapVideo = () => {
     return () => {
       video.removeEventListener("loadedmetadata", handleLoadedMetadata);
       ScrollTrigger.killAll(true); // Cleanup on unmount
+      video.currentTime = 0;
     };
   }, []);
 
@@ -89,7 +90,7 @@ const ScrollGsapVideo = () => {
             <ContactForm />
           </div>
         </div>
-        <div className="w-full flex gap-5 justify-start items-center h-max px-10 text-white">
+        {/* <div className="w-full flex gap-5 justify-end items-center h-max px-10 text-white">
           <div className="flex gap-3 items-center">
             Email <ArrowUpRight />
           </div>
@@ -99,6 +100,23 @@ const ScrollGsapVideo = () => {
           <div className="flex gap-3 items-center">
             Instagram <ArrowUpRight />
           </div>
+        </div> */}
+        <div className="w-full flex gap-5 justify-end items-center h-max px-10 text-white">
+          {["Email", "LinkedIn", "Instagram"].map((text) => (
+            <CursorTarget variant="button" key={text}>
+              <a
+                href="#"
+                className="relative group flex gap-3 items-center overflow-hidden"
+              >
+                <span className="relative z-10">{text}</span>
+                <ArrowUpRight className="z-10" />
+                <span
+                  className="absolute bottom-0 left-0 w-full h-[2px] bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-bottom-right group-hover:origin-bottom-left"
+                  aria-hidden="true"
+                />
+              </a>
+            </CursorTarget>
+          ))}
         </div>
       </div>
     </div>

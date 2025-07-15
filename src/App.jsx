@@ -1,14 +1,15 @@
-import { useEffect } from "react";
-import "./App.css";
-import Lenis from "@studio-freight/lenis";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./assets/Pages/Home";
-import PageTransitionWrapper from "./PixelTransitionWrapper";
-import About from "./assets/Pages/About";
-import { NavbarProvider } from "./NavbarContext";
-import Navbar from "./Navbar";
-import { Cursor, CursorProvider } from "@izhann/react-cursor-fx";
-import Footer from "./Footer";
+import { useEffect } from "react"
+import "./App.css"
+import Lenis from "@studio-freight/lenis"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import Home from "./assets/Pages/Home"
+import PageTransitionWrapper from "./PixelTransitionWrapper"
+import About from "./assets/Pages/About"
+import { NavbarProvider } from "./NavbarContext"
+import Navbar from "./Navbar"
+import { Cursor, CursorProvider } from "@izhann/react-cursor-fx"
+import Footer from "./Footer"
+import ScrollToTop from "./ScrollToTop"
 
 function App() {
   useEffect(() => {
@@ -20,17 +21,18 @@ function App() {
       smooth: true,
       smoothTouch: true,
       touchMultiplier: 2,
-    });
+    })
 
     function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
+      lenis.raf(time)
+      requestAnimationFrame(raf)
     }
-    requestAnimationFrame(raf);
-  }, []);
+    requestAnimationFrame(raf)
+  }, [])
 
   return (
     <Router>
+      <ScrollToTop />
       <CursorProvider config={config} hideNativeCursor={false}>
         <NavbarProvider>
           <div className="grain"></div>
@@ -42,14 +44,13 @@ function App() {
               <Route path="/about" Component={About} />
             </Routes>
           </PageTransitionWrapper>
-          <Footer />
         </NavbarProvider>
       </CursorProvider>
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App
 
 const config = {
   default: {
@@ -65,8 +66,8 @@ const config = {
     },
   },
   button: {
-    width: 60,
-    height: 60,
+    width: 40,
+    height: 40,
     shape: "circle",
     color: "rgba(255, 255, 255, 1)",
     mixBlendMode: "difference",
@@ -85,8 +86,9 @@ const config = {
     height: 100,
     shape: "circle",
     color: "rgba(255, 255, 255, 0)",
-    label: "lessgooo ᯓ➤",
-    labelColor:'white',
+    label: "lessgooo ⌯⌲",
+    labelColor: "white",
     fontSize: 18,
+    fontWeight: "200",
   },
-};
+}
