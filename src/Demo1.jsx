@@ -1,26 +1,27 @@
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useNavbar } from "./NavbarContext";
-import AnimatedText from "./AnimatedText";
-import ScrollLetterReveal from "./AnimatedText";
-gsap.registerPlugin(ScrollTrigger);
+import React, { useEffect, useRef } from "react"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useNavbar } from "./NavbarContext"
+import AnimatedText from "./AnimatedText"
+import ScrollLetterReveal from "./AnimatedText"
+import { CursorTarget } from "@izhann/react-cursor-fx"
+gsap.registerPlugin(ScrollTrigger)
 
 const PinnedScaleBox = () => {
-  const sectionRef = useRef(null);
-  const boxRef = useRef(null);
+  const sectionRef = useRef(null)
+  const boxRef = useRef(null)
 
-  const topRefs = useRef([]);
-  const middleLeftRef = useRef([]);
-  const middleRightRef = useRef([]);
-  const bottomRefs = useRef([]);
+  const topRefs = useRef([])
+  const middleLeftRef = useRef([])
+  const middleRightRef = useRef([])
+  const bottomRefs = useRef([])
 
   const collectRefs = (refArray) => (el) => {
     if (el && !refArray.current.includes(el)) {
-      refArray.current.push(el);
+      refArray.current.push(el)
     }
-  };
-  const { setIsNavbarVisible } = useNavbar();
+  }
+  const { setIsNavbarVisible, setIsNavbarOpen } = useNavbar()
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
@@ -33,13 +34,14 @@ const PinnedScaleBox = () => {
           toggleActions: "play reverse play reverse", // <-- key line
           onUpdate: (self) => {
             if (self.progress >= 1) {
-              setIsNavbarVisible(true);
+              setIsNavbarVisible(true)
             } else {
-              setIsNavbarVisible(false);
+              setIsNavbarVisible(false)
+              setIsNavbarOpen(false)
             }
           },
         },
-      });
+      })
 
       // Main scale animation (slower due to longer scroll range)
       tl.fromTo(
@@ -47,7 +49,7 @@ const PinnedScaleBox = () => {
         { scale: 0.25 },
         { scale: 1, ease: "none" },
         0 // Start at beginning
-      );
+      )
 
       tl.to(
         topRefs.current,
@@ -60,7 +62,7 @@ const PinnedScaleBox = () => {
           ease: "none",
         },
         0 // Same as start
-      );
+      )
 
       tl.to(
         middleLeftRef.current,
@@ -73,7 +75,7 @@ const PinnedScaleBox = () => {
           ease: "none",
         },
         0 // Slight delay
-      );
+      )
       tl.to(
         middleRightRef.current,
         {
@@ -85,7 +87,7 @@ const PinnedScaleBox = () => {
           ease: "none",
         },
         0 // Slight delay
-      );
+      )
       tl.to(
         bottomRefs.current,
         {
@@ -97,11 +99,11 @@ const PinnedScaleBox = () => {
           ease: "none",
         },
         0 // Further delay
-      );
-    }, sectionRef);
+      )
+    }, sectionRef)
 
-    return () => ctx.revert();
-  }, []);
+    return () => ctx.revert()
+  }, [])
 
   return (
     <div>
@@ -117,8 +119,9 @@ const PinnedScaleBox = () => {
             transformOrigin: "center center",
           }}
         >
-          <div className="w-full absolute top-0 bg-black z-50"></div>
-          <p className="text-7xl md:text-9xl font-black">Hello.</p>
+          <CursorTarget variant="waveText">
+            <p className="text-7xl md:text-9xl font-black">Hello.</p>
+          </CursorTarget>
         </div>
 
         <div className="absolute w-full top-10 px-10 flex gap-10 z-0 justify-between">
@@ -209,7 +212,7 @@ const PinnedScaleBox = () => {
         </div>
       </section>
     </div>
-  );
-};
+  )
+}
 
-export default PinnedScaleBox;
+export default PinnedScaleBox

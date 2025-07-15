@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 
 const PixelPageTransition = ({
-  gridSize = 10,
+  gridSize = 8,
   pixelColor = "#000",
   animationDuration = 0.8,
   onComplete = () => {},
@@ -75,7 +75,7 @@ const PixelPageTransition = ({
     <div
       ref={wrapperRef}
       style={{
-        background:'white',
+        background: "white",
         position: "fixed",
         inset: 0,
         zIndex: 9999,
