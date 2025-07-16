@@ -7,8 +7,6 @@ const ScrollToTop = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    ScrollTrigger.getAll().forEach((trigger) => trigger.kill()) // <-- kill triggers
-    ScrollTrigger.refresh()
   }, [pathname])
 
   return null

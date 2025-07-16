@@ -1,31 +1,31 @@
-import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useNavbar } from "./NavbarContext";
-import { CursorTarget } from "@izhann/react-cursor-fx";
-import ContactForm from "./ContactForm";
-import { ArrowUpRight } from "lucide-react";
+import React, { useEffect, useRef } from "react"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useNavbar } from "./NavbarContext"
+import { CursorTarget } from "@izhann/react-cursor-fx"
+import ContactForm from "./ContactForm"
+import { ArrowUpRight } from "lucide-react"
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger)
 
 const ScrollGsapVideo = () => {
-  const videoRef = useRef(null);
-  const containerRef = useRef(null);
-  const { setIsNavbarVisible, setIsNavbarOpen } = useNavbar();
+  const videoRef = useRef(null)
+  const containerRef = useRef(null)
+  const { setIsNavbarVisible, setIsNavbarOpen } = useNavbar()
 
   useEffect(() => {
-    const video = videoRef.current;
-    const container = containerRef.current;
+    const video = videoRef.current
+    const container = containerRef.current
 
-    if (!video || !container) return;
+    if (!video || !container) return
 
     // Ensure video metadata is loaded before setting up ScrollTrigger
     const handleLoadedMetadata = () => {
-      const duration = 6; // Get the video duration dynamically
+      const duration = 6 // Get the video duration dynamically
 
       if (!isFinite(duration) || duration === 0) {
-        console.warn("Invalid video duration:", duration);
-        return;
+        console.warn("Invalid video duration:", duration)
+        return
       }
 
       gsap.to(video, {
@@ -34,41 +34,41 @@ const ScrollGsapVideo = () => {
         scrollTrigger: {
           trigger: videoRef.current,
           start: "top top",
-          end: "+=200%", // Longer scroll = slower animation
+          end: "+=150%", // Longer scroll = slower animation
           scrub: true,
           pin: true,
           toggleActions: "play reverse play reverse", // <-- key line
           onUpdate: (self) => {
             if (self.progress > 0) {
-              setIsNavbarVisible(false);
-              setIsNavbarOpen(false);
+              setIsNavbarVisible(false)
+              setIsNavbarOpen(false)
             } else if (self.progress <= 0) {
-              setIsNavbarVisible(true);
-              setIsNavbarOpen(false);
+              setIsNavbarVisible(true)
+              setIsNavbarOpen(false)
             }
           },
         },
-      });
-    };
+      })
+    }
 
     if (video.readyState >= 0) {
-      handleLoadedMetadata(); // If already ready
+      handleLoadedMetadata() // If already ready
     } else {
-      video.addEventListener("loadedmetadata", handleLoadedMetadata);
+      video.addEventListener("loadedmetadata", handleLoadedMetadata)
     }
 
     return () => {
-      video.removeEventListener("loadedmetadata", handleLoadedMetadata);
-      ScrollTrigger.killAll(true); // Cleanup on unmount
-      video.currentTime = 0;
-    };
-  }, []);
+      video.removeEventListener("loadedmetadata", handleLoadedMetadata)
+      ScrollTrigger.killAll(true) // Cleanup on unmount
+      video.currentTime = 0
+    }
+  }, [])
 
   return (
     <div
       ref={containerRef}
       style={{
-        height: "300vh",
+        height: "250vh",
         position: "relative",
       }}
     >
@@ -120,7 +120,7 @@ const ScrollGsapVideo = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ScrollGsapVideo;
+export default ScrollGsapVideo

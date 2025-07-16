@@ -265,27 +265,27 @@
 //   );
 // };
 
-import { useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
-import { useNavbar } from "./NavbarContext";
-import gsap from "gsap";
-import PixelTransition from "./CardPixelTransition";
-import { ArrowUpRight } from "lucide-react";
+import { useEffect, useRef } from "react"
+import { Link } from "react-router-dom"
+import { useNavbar } from "./NavbarContext"
+import gsap from "gsap"
+import PixelTransition from "./CardPixelTransition"
+import { ArrowUpRight } from "lucide-react"
 
 const Navbar = () => {
   const { isNavbarVisible, setIsNavbarVisible, isNavbarOpen, setIsNavbarOpen } =
-    useNavbar();
+    useNavbar()
 
-  const dropdownRef = useRef(null);
-  const overlayRef = useRef(null);
-  const dropdownWrapperRef = useRef(null);
-  const boxRefs = useRef([]);
+  const dropdownRef = useRef(null)
+  const overlayRef = useRef(null)
+  const dropdownWrapperRef = useRef(null)
+  const boxRefs = useRef([])
 
   const setBoxRef = (el, index) => {
     if (el) {
-      boxRefs.current[index] = el;
+      boxRefs.current[index] = el
     }
-  };
+  }
 
   // Prevent scroll when navbar is open
   // useEffect(() => {
@@ -300,15 +300,15 @@ const Navbar = () => {
         dropdownWrapperRef.current &&
         !dropdownWrapperRef.current.contains(event.target)
       ) {
-        setIsNavbarOpen(false);
+        setIsNavbarOpen(false)
       }
     }
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside)
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isNavbarOpen]);
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [isNavbarOpen])
 
   // GSAP timeline animations
   useEffect(() => {
@@ -317,14 +317,14 @@ const Navbar = () => {
       !overlayRef.current ||
       boxRefs.current.length === 0
     )
-      return;
+      return
 
-    const overlay = overlayRef.current;
-    const dropdown = dropdownRef.current;
-    const boxes = boxRefs.current;
+    const overlay = overlayRef.current
+    const dropdown = dropdownRef.current
+    const boxes = boxRefs.current
 
     if (isNavbarOpen) {
-      const openTl = gsap.timeline();
+      const openTl = gsap.timeline()
 
       openTl
         .fromTo(
@@ -335,7 +335,7 @@ const Navbar = () => {
             duration: 0.3,
             ease: "power2.out",
             onStart: () => {
-              overlay.style.pointerEvents = "auto";
+              overlay.style.pointerEvents = "auto"
             },
           }
         )
@@ -364,9 +364,9 @@ const Navbar = () => {
             ease: "power2.out",
           },
           "-=0.2"
-        );
+        )
     } else {
-      const closeTl = gsap.timeline();
+      const closeTl = gsap.timeline()
 
       closeTl
         .to(boxes, {
@@ -394,13 +394,13 @@ const Navbar = () => {
             duration: 0.2,
             ease: "power2.in",
             onComplete: () => {
-              overlay.style.pointerEvents = "none";
+              overlay.style.pointerEvents = "none"
             },
           },
           "-=0.2"
-        );
+        )
     }
-  }, [isNavbarOpen]);
+  }, [isNavbarOpen])
 
   return (
     <>
@@ -421,15 +421,15 @@ const Navbar = () => {
         <div className="w-full flex justify-between items-center">
           <div className="flex gap-5 ">
             <div
-              className="cursor-pointer text-lg flex items-center text-white mix-blend-exclusion"
+              className="cursor-pointer text-lg flex items-center justify-center text-white mix-blend-exclusion"
               onClick={() => {
-                setIsNavbarOpen(!isNavbarOpen);
+                setIsNavbarOpen(!isNavbarOpen)
               }}
             >
               <div className="mix-blend-exclusion ">menu &nbsp;</div>
               <div
-                className={`text-xl transform transition-transform duration-300 ease-in-out ${
-                  isNavbarOpen ? "-rotate-45" : "rotate-0"
+                className={`text-2xl transform transition-transform duration-300 ease-in-out ${
+                  isNavbarOpen ? "-rotate-[135deg]" : "rotate-0"
                 }`}
               >
                 +
@@ -474,8 +474,8 @@ const Navbar = () => {
                   <Link
                     to="/about"
                     onClick={() => {
-                      setIsNavbarOpen(false);
-                      setIsNavbarVisible(true);
+                      setIsNavbarOpen(false)
+                      setIsNavbarVisible(true)
                     }}
                     className="w-full h-full flex items-end justify-end px-5 py-3"
                   >
@@ -511,23 +511,23 @@ const Navbar = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar
 
 const SecondContent = ({ link, name }) => {
   return (
     <Link
       to={link}
       onClick={() => {
-        setIsNavbarOpen(false);
-        setIsNavbarVisible(true);
+        setIsNavbarOpen(false)
+        setIsNavbarVisible(true)
       }}
       className="w-full h-full flex flex-col items-start justify-between px-5 py-3 bg-black text-white"
     >
       <ArrowUpRight size={40} />
       <p className="text-2xl cal w-full text-right">{name}.</p>
     </Link>
-  );
-};
+  )
+}
