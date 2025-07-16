@@ -104,7 +104,7 @@ void main() {
 
 export default function Balatro({
   spinRotation = -2.0,
-  spinSpeed = 7.0,
+  spinSpeed = 10.0,
   offset = [0.0, 0.0],
   color1 = "#ffffff",
   color2 = "#000000",

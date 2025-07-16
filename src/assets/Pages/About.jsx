@@ -84,7 +84,7 @@ const About = () => {
         { scaleY: 0 },
         {
           scaleY: 1,
-          transformOrigin: "bottom",
+          transformOrigin: "top",
           ease: "power2.out",
           duration: 0.7,
         }
@@ -94,7 +94,7 @@ const About = () => {
         { scaleY: 0 },
         {
           scaleY: 1,
-          transformOrigin: "bottom",
+          transformOrigin: "top",
           ease: "power2.out",
           duration: 0.7,
         },
@@ -112,18 +112,22 @@ const About = () => {
         className="relative bg-white min-h-screen min-w-screen overflow-hidden border-x flex flex-col md:flex-row gap-0 "
       >
         {/* Left Pane */}
-        <div className="relative w-full md:w-1/2 h-[50vh] md:h-screen bg-white overflow-hidden py-14">
+        <div className="relative w-full flex items-center md:w-1/2 h-[50vh] md:h-screen bg-white overflow-hidden py-5 md:py-14">
           <div
             ref={leftOverlay}
             className="absolute inset-0 bg-black z-10"
             style={{ transformOrigin: "top", transform: "scaleY(1)" }}
           />
-          <ScrollLetterReveal textClassName="text-2xl md:text-2xl px-5 leading-[2rem] md:leading-none ">
+          <ScrollLetterReveal textClassName="text-xl md:text-2xl px-5 leading-[1.5rem] md:leading-none ">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae magni
             perspiciatis praesentium tempora amet voluptas blanditiis veritatis
             omnis minus exercitationem? Obcaecati explicabo eaque quisquam rerum
             quia temporibus soluta commodi doloribus!
           </ScrollLetterReveal>
+          <div className="absolute left-[60%] md:left-[88%] top-[85%] md:top-10  flex flex-col gap-5">
+            <div className="text-lg">this is me, <span className="text-xl handwritten">in anime!</span></div>
+            <div className="text-5xl leading-none relative -left-15 rotate-[-20deg]  md:rotate-[10deg]">⤿</div>
+          </div>
         </div>
 
         {/* Right Pane */}
