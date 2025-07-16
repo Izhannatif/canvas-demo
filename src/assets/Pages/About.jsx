@@ -124,9 +124,9 @@ const About = () => {
             omnis minus exercitationem? Obcaecati explicabo eaque quisquam rerum
             quia temporibus soluta commodi doloribus!
           </ScrollLetterReveal>
-          <div className="absolute left-[60%] md:left-[88%] top-[85%] md:top-10  flex flex-col gap-5">
+          <div className="absolute left-[60%] md:left-[88%] top-[85%] md:top-10  flex flex-row-reverse md:flex-col gap-0 md:gap-0">
             <div className="text-lg">this is me, <span className="text-xl handwritten">in anime!</span></div>
-            <div className="text-5xl leading-none relative -left-15 rotate-[-20deg]  md:rotate-[10deg]">⤿</div>
+            <div className="text-5xl relative -left-0 md:left-10 rotate-[60deg]  md:rotate-[10deg]">⤿</div>
           </div>
         </div>
 
