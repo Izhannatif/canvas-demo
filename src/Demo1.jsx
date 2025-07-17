@@ -397,7 +397,7 @@ const PinnedScaleBox = () => {
             pixelFilter={3000}
           />
         )} */}
-        <div className="absolute text-[16vw] md:text-[14vw] leading-loose md:leading-none left-5 text-black/50 md:text-white/70 top-1/6 md:top-5 pointer-events-none text-stroke-1">
+        <div className="absolute text-[15vw] md:text-[14vw] leading-loose md:leading-none left-5 text-black top-1/6 md:top-5 pointer-events-nonefont-black  ">
           <div ref={mainHeading1Ref} className="">
             reimagining
           </div>
