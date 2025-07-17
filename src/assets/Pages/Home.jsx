@@ -1,13 +1,9 @@
-import React from "react"
-import Honeycomb from "../../HoneyComb"
-import PinnedScaleImage from "../../Demo1"
-import ScrollLetterReveal from "../../AnimatedText"
-import { CursorTarget } from "@izhann/react-cursor-fx"
-import FlameTrail from "../../FlameTrail"
-import Footer from "../../Footer"
-import CreativeProcess from "../../CreativeProcess"
-import About from "./About"
-import Balatro from "../../Balatro"
+import PinnedScaleImage from "../../Demo1";
+import Footer from "../../Footer";
+import CreativeProcess from "../../CreativeProcess";
+import About from "./About";
+import InfiniteGrid from "../../projectgrid/InifiniteGrid";
+import InfiniteGridGSAP from "../../projectgrid/InfiniteGridGSAP";
 
 const Home = () => {
   return (
@@ -18,12 +14,15 @@ const Home = () => {
 
       {/* <FlameTrail /> */}
       <CreativeProcess />
+      <h1 className="text-white px-2 text-9xl font-black">MY WORK</h1>
+
+      <InfiniteGridGSAP />
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
 
 {
   /* I’m Izhan, a frontend developer and designer based in Karachi. I build fast, responsive websites with Next JS — focused on clean UI, smooth UX, and performance that scales. */

@@ -91,4 +91,20 @@ const config = {
     fontSize: 18,
     fontWeight: "200",
   },
+    dragText: {
+    width: 80,
+    height: 80,
+    shape: "circle",
+    color: "#ffffff",
+    label: "[ CLICK & DRAG ]",
+    labelColor: "black",
+    fontSize: 10,
+    mixBlendMode: "difference",
+    fontWeight: "200",
+     transition: {
+      stiffness: 800,
+      damping: 50,
+      mass: 0.5,
+    },
+  },
 }

@@ -29,7 +29,6 @@ import React, { useEffect, useRef } from "react"
 import { useNavbar } from "../../NavbarContext"
 import gsap from "gsap"
 import ScrollTrigger from "gsap/ScrollTrigger"
-import Footer from "../../Footer"
 import ScrollLetterReveal from "../../AnimatedText"
 
 gsap.registerPlugin(ScrollTrigger)
@@ -77,7 +76,7 @@ const About = () => {
         },
         "<=0.1"
       )
-      tl.to({}, { duration: 0.2 })
+      tl.to({}, { duration: 0.3 })
 
       tl.fromTo(
         rightOverlay.current,
@@ -125,8 +124,8 @@ const About = () => {
             quia temporibus soluta commodi doloribus!
           </ScrollLetterReveal>
           <div className="absolute left-[60%] md:left-[88%] top-[85%] md:top-10  flex flex-row-reverse md:flex-col gap-0 md:gap-0">
-            <div className="text-lg">this is me, <span className="text-xl handwritten">in anime!</span></div>
-            <div className="text-5xl relative -left-0 md:left-10 rotate-[60deg]  md:rotate-[10deg]">⤿</div>
+            <div className="text-lg">this is me, <br /><span className="text-xl handwritten">in anime!</span></div>
+            <div className="text-5xl relative -left-4 md:left-10 rotate-[90deg]  md:rotate-[10deg]">⤿</div>
           </div>
         </div>
 

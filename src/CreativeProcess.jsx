@@ -540,8 +540,8 @@ export default function CreativeProcess() {
       tl.to(
         contentRef.current,
         {
-          scale: 14,
-          duration: 2,
+          scale: 16,
+          duration: 1,
           ease: "power2.inOut",
           transformOrigin: "center center",
         },
@@ -549,7 +549,7 @@ export default function CreativeProcess() {
       )
 
       tl.to(
-        [centerRef.current, mainHeadingRef.current],
+        [centerRef.current, mainHeadingRef.current, subTextRefs.current[0], subTextRefs.current[1], subTextRefs.current[2]],
         {
           opacity: 0,
           duration: 1,
