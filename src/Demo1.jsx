@@ -288,23 +288,23 @@
 
 // export default PinnedScaleBox
 
-import React, { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useNavbar } from "./NavbarContext";
-import { CursorTarget } from "@izhann/react-cursor-fx";
-import Balatro from "./Balatro";
+import React, { useEffect, useRef, useState } from "react"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useNavbar } from "./NavbarContext"
+import { CursorTarget } from "@izhann/react-cursor-fx"
+import Balatro from "./Balatro"
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger)
 
 const PinnedScaleBox = () => {
-  const sectionRef = useRef(null);
-  const boxRef = useRef(null);
-  const { setIsNavbarVisible, setIsNavbarOpen } = useNavbar();
-  const [showBalatro, setShowBalatro] = useState(false);
-  const mainHeading1Ref = useRef(null);
-  const mainHeading2Ref = useRef(null);
-  const mainHeading3Ref = useRef(null);
+  const sectionRef = useRef(null)
+  const boxRef = useRef(null)
+  const { setIsNavbarVisible, setIsNavbarOpen } = useNavbar()
+  const [showBalatro, setShowBalatro] = useState(false)
+  const mainHeading1Ref = useRef(null)
+  const mainHeading2Ref = useRef(null)
+  const mainHeading3Ref = useRef(null)
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
@@ -320,14 +320,14 @@ const PinnedScaleBox = () => {
           onLeaveBack: () => setShowBalatro(false),
           onUpdate: (self) => {
             if (self.progress >= 1) {
-              setIsNavbarVisible(true);
+              setIsNavbarVisible(true)
             } else {
-              setIsNavbarVisible(false);
-              setIsNavbarOpen(false);
+              setIsNavbarVisible(false)
+              setIsNavbarOpen(false)
             }
           },
         },
-      });
+      })
 
       tl.fromTo(
         boxRef.current,
@@ -342,34 +342,33 @@ const PinnedScaleBox = () => {
             filter: "blur(10px)",
             transformOrigin: "bottom",
             ease: "none",
+          },
+          0
+        )
+      tl.to(
+        mainHeading2Ref.current,
+        {
+          opacity: 0,
+          filter: "blur(10px)",
+          transformOrigin: "top",
+          ease: "none",
+        },
+        0
+      )
+      tl.to(
+        mainHeading3Ref.current,
+        {
+          opacity: 0,
+          filter: "blur(10px)",
+          transformOrigin: "bottom",
+          ease: "none",
+        },
+        0
+      )
+    }, sectionRef)
 
-          },
-          0
-        );
-        tl.to(
-          mainHeading2Ref.current,
-          {
-            opacity: 0,
-            filter: "blur(10px)",
-            transformOrigin: "top",
-            ease: "none",
-          },
-          0
-        );
-        tl.to(
-          mainHeading3Ref.current,
-          {
-            opacity: 0,
-            filter: "blur(10px)",
-            transformOrigin: "bottom",
-            ease: "none",
-          },
-          0
-        );
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
+    return () => ctx.revert()
+  }, [])
 
   return (
     <div>
@@ -397,7 +396,7 @@ const PinnedScaleBox = () => {
             pixelFilter={3000}
           />
         )} */}
-        <div className="absolute text-[15vw] md:text-[14vw] leading-loose md:leading-none left-5 text-black top-1/6 md:top-5 pointer-events-nonefont-black  ">
+        <div className="absolute text-[15vw] md:text-[14vw] leading-loose md:leading-none left-5 text-transparent top-1/4 md:top-5 pointer-events-none font-black text-stroke-1">
           <div ref={mainHeading1Ref} className="">
             reimagining
           </div>
@@ -408,7 +407,7 @@ const PinnedScaleBox = () => {
         </div>
       </section>
     </div>
-  );
-};
+  )
+}
 
-export default PinnedScaleBox;
+export default PinnedScaleBox

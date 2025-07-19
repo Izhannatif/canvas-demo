@@ -10,12 +10,13 @@ import Navbar from "./Navbar"
 import { Cursor, CursorProvider } from "@izhann/react-cursor-fx"
 import Footer from "./Footer"
 import ScrollToTop from "./ScrollToTop"
+import Work from "./assets/Pages/Work"
 
 function App() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -5 * t)),
+      duration: 1,
+      easing: (t) => Math.min(1, 1.1 - Math.pow(1.5, -5 * t)),
       direction: "vertical",
       gestureDirection: "vertical",
       smooth: true,
@@ -42,6 +43,7 @@ function App() {
             <Routes>
               <Route path="/" Component={Home} />
               <Route path="/about" Component={About} />
+              <Route path="/work" Component={Work} />
             </Routes>
           </PageTransitionWrapper>
         </NavbarProvider>
@@ -72,6 +74,13 @@ const config = {
     color: "rgba(255, 255, 255, 1)",
     mixBlendMode: "difference",
   },
+  workButton: {
+    width: 60,
+    height: 60,
+    shape: "circle",
+    color: "rgba(255, 255, 255, 1)",
+    mixBlendMode: "difference",
+  },
   waveText: {
     width: 60,
     height: 60,
@@ -91,17 +100,16 @@ const config = {
     fontSize: 18,
     fontWeight: "200",
   },
-    dragText: {
-    width: 80,
-    height: 80,
+  dragText: {
+    width: 70,
+    height: 70,
     shape: "circle",
     color: "#ffffff",
-    label: "[ CLICK & DRAG ]",
+    label: "[ DRAG ]",
     labelColor: "black",
-    fontSize: 10,
-    mixBlendMode: "difference",
-    fontWeight: "200",
-     transition: {
+    fontSize: 12,
+    fontWeight: "500",
+    transition: {
       stiffness: 800,
       damping: 50,
       mass: 0.5,

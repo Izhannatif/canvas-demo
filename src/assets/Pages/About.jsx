@@ -124,8 +124,13 @@ const About = () => {
             quia temporibus soluta commodi doloribus!
           </ScrollLetterReveal>
           <div className="absolute left-[60%] md:left-[88%] top-[85%] md:top-10  flex flex-row-reverse md:flex-col gap-0 md:gap-0">
-            <div className="text-lg">this is me, <br /><span className="text-xl handwritten">in anime!</span></div>
-            <div className="text-5xl relative -left-4 md:left-10 rotate-[90deg]  md:rotate-[10deg]">⤿</div>
+            <div className="text-lg">
+              this is me, <br />
+              <span className="text-xl handwritten">in anime!</span>
+            </div>
+            <div className="text-5xl relative -left-4 md:left-10 rotate-[90deg]  md:rotate-[10deg]">
+              ⤿
+            </div>
           </div>
         </div>
 
@@ -137,6 +142,7 @@ const About = () => {
             style={{ transformOrigin: "bottom", transform: "scaleY(1)" }}
           />
           <img
+            // src="https://charlesleclerc.com/wp-content/uploads/2025/02/Leclerc-Motorsport-03.jpg"
             src="./me3.png"
             alt=""
             className="object-cover object-top w-full h-full"

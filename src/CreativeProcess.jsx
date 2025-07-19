@@ -450,27 +450,27 @@ export default function CreativeProcess() {
     ? [
         { cx: 350, cy: 360 },
         { cx: 650, cy: 360 },
-        { cx: 500, cy: 600 },
+        { cx: 500, cy: 630 },
       ]
     : [
         { cx: 325, cy: 400 },
-        { cx: 675, cy: 400 },
-        { cx: 500, cy: 645 },
+        { cx: 665, cy: 400 },
+        { cx: 500, cy: 685 },
       ]
 
   const titlePositions = isMobile
     ? [
-        { left: "14%", top: "32%" },
-        { left: "70%", top: "32%" },
-        { left: "40%", top: "68%" },
+        { left: "14%", top: "37%" },
+        { left: "70%", top: "37%" },
+        { left: "40%", top: "61%" },
       ]
     : [
-        { left: "30%", top: "28%" },
-        { left: "62%", top: "28%" },
-        { left: "45%", top: "80%" },
+        { left: "33%", top: "30%" },
+        { left: "60%", top: "30%" },
+        { left: "46%", top: "76%" },
       ]
 
-  const radius = isMobile ? 280 : 340
+  const radius = isMobile ? 280 : 280
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -541,7 +541,7 @@ export default function CreativeProcess() {
         contentRef.current,
         {
           scale: 16,
-          duration: 1,
+          duration: 1.5,
           ease: "power2.inOut",
           transformOrigin: "center center",
         },
@@ -549,7 +549,13 @@ export default function CreativeProcess() {
       )
 
       tl.to(
-        [centerRef.current, mainHeadingRef.current, subTextRefs.current[0], subTextRefs.current[1], subTextRefs.current[2]],
+        [
+          centerRef.current,
+          mainHeadingRef.current,
+          subTextRefs.current[0],
+          subTextRefs.current[1],
+          subTextRefs.current[2],
+        ],
         {
           opacity: 0,
           duration: 1,
@@ -588,9 +594,120 @@ export default function CreativeProcess() {
               />
             )
           })}
+
+          {/* Title inside SVG */}
+          <foreignObject
+            x={isMobile ? "375" : "370"}
+            y={isMobile ? "420" : "450"}
+            width="250"
+            height="100"
+          >
+            <div
+              ref={centerRef}
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="text-white text-center text-3xl leading-tight "
+            >
+              My Creativity Process
+            </div>
+          </foreignObject>
+
+          <foreignObject
+            x={isMobile ? "100" : "100"}
+            y={isMobile ? "300" : "300"}
+            width="250"
+            height="100"
+          >
+            <div
+              ref={(el) => (textRefs.current[0] = el)}
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="text-white text-center text-5xl leading-tight opacity-0"
+            >
+              Curiosity
+            </div>
+          </foreignObject>
+
+          <foreignObject
+            x={isMobile ? "650" : "650"}
+            y={isMobile ? "300" : "300"}
+            width="250"
+            height="100"
+          >
+            <div
+              ref={(el) => (textRefs.current[1] = el)}
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="text-white text-center text-5xl leading-tight opacity-0"
+            >
+              Structure
+            </div>
+          </foreignObject>
+
+          <foreignObject
+            x={isMobile ? "375" : "375"}
+            y={isMobile ? "750" : "750"}
+            width="250"
+            height="100"
+          >
+            <div
+              ref={(el) => (textRefs.current[2] = el)}
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="text-white text-center text-5xl leading-tight opacity-0"
+            >
+              Interaction
+            </div>
+          </foreignObject>
+
+          {/* Subtext labels inside SVG */}
+          <foreignObject
+            x={isMobile ? "430" : "425"}
+            y={isMobile ? "220" : "290"}
+            width="140"
+            height="100"
+          >
+            <div
+              ref={(el) => (subTextRefs.current[0] = el)}
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="text-white text-center text-xl leading-tight opacity-0"
+            >
+              Look, Think
+              <br />
+              and Imagine.
+            </div>
+          </foreignObject>
+          <foreignObject
+            x={isMobile ? "240" : "250"}
+            y={isMobile ? "520" : "570"}
+            width="180"
+            height="100"
+          >
+            <div
+              ref={(el) => (subTextRefs.current[1] = el)}
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="text-white text-center text-xl leading-tight opacity-0"
+            >
+              Invisible threads
+              <br />
+              that move people.
+            </div>
+          </foreignObject>
+          <foreignObject
+            x={isMobile ? "580" : "560"}
+            y={isMobile ? "520" : "570"}
+            width="180"
+            height="100"
+          >
+            <div
+              ref={(el) => (subTextRefs.current[2] = el)}
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="text-white text-center text-xl leading-tight opacity-0"
+            >
+              Clean, Scalable
+              <br />
+              and Solid.
+            </div>
+          </foreignObject>
         </svg>
 
-        {data.map((item, i) => {
+        {/* {data.map((item, i) => {
           const posTitle = titlePositions[i]
           return (
             <div
@@ -605,17 +722,17 @@ export default function CreativeProcess() {
               <h2 className="text-xl md:text-3xl font-bold">{item.title}</h2>
             </div>
           )
-        })}
+        })} */}
 
         {/* Center Overlap Text */}
-        <div
+        {/* <div
           ref={centerRef}
           className="absolute left-1/2 top-[45%] md:top-[49%] transform -translate-x-1/2 -translate-y-1/2 text-center z-10 pointer-events-none text-white font-normal text-shadow-me px-4 md:backdrop-blur-none md:px-0"
         >
           <h3 className="text-lg md:text-2xl font-semibold">
             My Creative <br /> Process
           </h3>
-        </div>
+        </div> */}
 
         <div
           ref={mainHeadingRef}
@@ -623,27 +740,16 @@ export default function CreativeProcess() {
         >
           creative process
         </div>
-
-        {/* Subtexts */}
-        <div
-          ref={(el) => (subTextRefs.current[0] = el)}
-          className="absolute text-white text-sm md:text-md text-center opacity-0 left-1/2 top-[33%] md:left-1/2 md:top-1/4 transform -translate-x-1/2 -translate-y-1/2 text-shadow-me px-4 md:backdrop-blur-none md:px-0"
-        >
-          Look, Think <br /> and Imagine.
-        </div>
-        <div
-          ref={(el) => (subTextRefs.current[1] = el)}
-          className="absolute text-white text-sm md:text-md text-center opacity-0 left-[35%] top-[53%] md:left-[40%] md:top-[63%] transform -translate-x-1/2 -translate-y-1/2 text-shadow-me px-4 md:backdrop-blur-none md:px-0"
-        >
-          Invisible threads <br /> that move people.
-        </div>
-        <div
-          ref={(el) => (subTextRefs.current[2] = el)}
-          className="absolute text-white text-sm md:text-md text-center opacity-0 left-[65%] md:left-[60%] top-[53%] md:top-[63%] transform -translate-x-1/2 -translate-y-1/2 text-shadow-me px-4 md:px-0"
-        >
-          Clean, Scalable <br /> and Solid.
-        </div>
       </div>
     </section>
   )
+}
+{
+  /* <div className="">Curiosity ∩ Interaction</div> */
+}
+{
+  /* <div className="">Structure ∩ Interaction</div> */
+}
+{
+  /* <div className="">Curiosity ∩ Structure</div> */
 }

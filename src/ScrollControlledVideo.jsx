@@ -66,6 +66,7 @@ const ScrollGsapVideo = () => {
 
   return (
     <div
+      className="w-screen"
       ref={containerRef}
       style={{
         height: "250vh",

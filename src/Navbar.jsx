@@ -495,16 +495,14 @@ const Navbar = () => {
               <PixelTransition
                 firstContent={
                   <Link
-                    to="/contact"
+                    to="/work"
                     onClick={() => setIsNavbarOpen(false)}
                     className="w-full h-full flex items-end justify-end px-5 py-3"
                   >
-                    <span className="text-2xl cal">contact.</span>
+                    <span className="text-2xl cal">work.</span>
                   </Link>
                 }
-                secondContent={
-                  <SecondContent link={"/contact"} name={"contact"} />
-                }
+                secondContent={<SecondContent link={"/work"} name={"work"} />}
               />
             </div>
           </div>
