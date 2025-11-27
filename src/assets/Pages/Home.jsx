@@ -2,10 +2,8 @@ import PinnedScaleImage from "../../Demo1"
 import Footer from "../../Footer"
 import CreativeProcess from "../../CreativeProcess"
 import About from "./About"
-import InfiniteGrid from "../../projectgrid/InifiniteGrid"
-import InfiniteGridGSAP from "../../projectgrid/InfiniteGridGSAP"
 import WorkSection from "../../WorkSection"
-import CareerJourney from "../../CareerJourney"
+import CareerTimeline from "../../CareerJourney"
 
 const Home = () => {
   return (
@@ -13,11 +11,8 @@ const Home = () => {
       <PinnedScaleImage />
       <About />
       <div></div>
-
-      {/* <FlameTrail /> */}
+      {/* <CareerTimeline /> */}
       <CreativeProcess />
-      {/* <CareerJourney /> */}
-      {/* <InfiniteGridGSAP /> */}
       <WorkSection />
       <Footer />
     </div>

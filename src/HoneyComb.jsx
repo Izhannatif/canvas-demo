@@ -236,9 +236,9 @@ const Hexagon = ({ points, isHovered }) => (
   <Line
     points={points}
     closed
-    stroke="white"
+    stroke="#232323"
     strokeWidth={1}
-    fill={isHovered ? "white" : "white"}
+    fill={isHovered ? "black" : "black"}
   />
 )
 
@@ -352,7 +352,7 @@ const Honeycomb = () => {
       height={height}
       onMouseMove={handleMouseMove}
       onMouseLeave={() => setMousePos({ x: -1000, y: -1000 })}
-      draggable
+      // draggable
     >
       <Layer>
         {hexesRef.current.map((hex) => {

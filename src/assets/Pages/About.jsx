@@ -25,23 +25,23 @@
 //   /* <Footer /> */
 // }
 
-import React, { useEffect, useRef } from "react"
-import { useNavbar } from "../../NavbarContext"
-import gsap from "gsap"
-import ScrollTrigger from "gsap/ScrollTrigger"
-import ScrollLetterReveal from "../../AnimatedText"
+import React, { useEffect, useRef } from "react";
+import { useNavbar } from "../../NavbarContext";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import ScrollLetterReveal from "../../AnimatedText";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
-  const { setIsNavbarVisible } = useNavbar()
-  const sectionRef = useRef(null)
-  const leftOverlay = useRef(null)
-  const rightOverlay = useRef(null)
+  const { setIsNavbarVisible } = useNavbar();
+  const sectionRef = useRef(null);
+  const leftOverlay = useRef(null);
+  const rightOverlay = useRef(null);
 
   useEffect(() => {
-    setIsNavbarVisible(true)
-  }, [])
+    setIsNavbarVisible(true);
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -53,7 +53,7 @@ const About = () => {
           scrub: true,
           pin: true,
         },
-      })
+      });
 
       tl.fromTo(
         leftOverlay.current,
@@ -64,7 +64,7 @@ const About = () => {
           ease: "power2.out",
           duration: 1,
         }
-      )
+      );
       tl.fromTo(
         rightOverlay.current,
         { scaleY: 1 },
@@ -75,8 +75,8 @@ const About = () => {
           duration: 1,
         },
         "<=0.1"
-      )
-      tl.to({}, { duration: 0.3 })
+      );
+      tl.to({}, { duration: 0.3 });
 
       tl.fromTo(
         rightOverlay.current,
@@ -87,7 +87,7 @@ const About = () => {
           ease: "power2.out",
           duration: 0.7,
         }
-      )
+      );
       tl.fromTo(
         leftOverlay.current,
         { scaleY: 0 },
@@ -98,11 +98,11 @@ const About = () => {
           duration: 0.7,
         },
         "<=0.2"
-      )
-    }, sectionRef)
+      );
+    }, sectionRef);
 
-    return () => ctx.revert()
-  }, [])
+    return () => ctx.revert();
+  }, []);
 
   return (
     <>
@@ -114,15 +114,28 @@ const About = () => {
         <div className="relative w-full flex items-center md:w-1/2 h-[50vh] md:h-screen bg-white overflow-hidden py-5 md:py-14">
           <div
             ref={leftOverlay}
-            className="absolute inset-0 bg-black z-10"
+            className="absolute inset-0 bg-white z-10"
             style={{ transformOrigin: "top", transform: "scaleY(1)" }}
           />
-          <ScrollLetterReveal textClassName="text-xl md:text-2xl px-5 leading-[1.5rem] md:leading-none ">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae magni
-            perspiciatis praesentium tempora amet voluptas blanditiis veritatis
-            omnis minus exercitationem? Obcaecati explicabo eaque quisquam rerum
-            quia temporibus soluta commodi doloribus!
-          </ScrollLetterReveal>
+          <div className="flex flex-col gap-4">
+            <p className="seventy opacity-30 text-3xl px-5 origin-center mb-5 -rotate-6">something about me</p>
+          <p className="text-xl md:text-2xl px-5 leading-[1.5rem] md:leading-none ">
+            I’m Izhan. I make things because it’s fun, frustrating, and oddly
+            addictive. Some days everything works, some days nothing does, and
+            both are equally entertaining in their own miserable way.
+          </p>
+          <p className="text-xl md:text-2xl px-5 leading-[1.5rem] md:leading-none ">
+            I enjoy the process more than the outcome. Late night debugging,
+            accidental solutions, and tiny wins that feel way bigger than they
+            actually are. It's messy, unpredictable, and occasionally
+            infuriating, which makes it perfect for someone like me who likes to
+            poke at things until they behave.
+          </p>
+          <p className="text-xl md:text-2xl px-5 leading-[1.5rem] md:leading-none ">
+            At the end of the day, I’m just a builder, a learner, and someone
+            who occasionally breaks their own creations and calls it <i>work</i>.
+          </p>
+          </div>
           <div className="absolute left-[60%] md:left-[88%] top-[85%] md:top-10  flex flex-row-reverse md:flex-col gap-0 md:gap-0">
             <div className="text-lg">
               this is me, <br />
@@ -138,7 +151,7 @@ const About = () => {
         <div className="relative w-full md:w-1/2 h-[50vh] md:h-screen bg-yellow-100 overflow-hidden">
           <div
             ref={rightOverlay}
-            className="absolute inset-0 bg-black z-10"
+            className="absolute inset-0 bg-white z-10"
             style={{ transformOrigin: "bottom", transform: "scaleY(1)" }}
           />
           <img
@@ -150,7 +163,7 @@ const About = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default About
+export default About;

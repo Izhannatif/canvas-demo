@@ -211,36 +211,36 @@ const WorkSection = () => {
   }, [])
 
   const projects = [
-    { name: "1", bgColor: "#782738" },
-    { name: "2", bgColor: "#sad231" },
-    { name: "3", bgColor: "#errw32" },
-    { name: "4", bgColor: "#214565" },
+    { name: "1", bgColor: "#fff" },
+    { name: "2", bgColor: "#fff" },
+    { name: "3", bgColor: "#fff" },
+    { name: "4", bgColor: "#fff" },
   ]
 
   return (
     <section
       ref={sectionRef}
-      className="relative bg-black h-screen overflow-hidden w-screen"
+      className="relative bg-white h-screen overflow-hidden w-screen"
     >
-      <h1 className="text-white px-2 text-7xl md:text-9xl font-black pb-0 pt-16 md:pt-0">
-        MY WORK
+      <h1 className="text-black px-2 text-7xl md:text-9xl  pb-0 pt-16 md:pt-0 seventy -rotate-6 mb-5">
+        my work
       </h1>
       <div className="relative flex flex-col justify-center h-full items-center w-full">
         {projects.map((project, index) => (
           <div
             key={index}
             ref={(el) => (cardsRef.current[index] = el)}
-            className="bg-black w-[400px] h-[400px] md:w-[30vw] md:h-[50vh] opacity-0 transform absolute top-10 left-1/2 right-0 -translate-x-1/2 flex flex-col items-start justify-between text-xl font-semibold text-gray-700 border border-white py-3 px-5"
+            className="bg-white w-[400px] h-[400px] md:w-[30vw] md:h-[50vh] opacity-0 transform absolute top-10 left-1/2 right-0 -translate-x-1/2 flex flex-col items-start justify-between text-xl font-semibold text-gray-700 border border-black py-3 px-5"
           >
             <div className="h-3/4 w-full flex flex-col gap-3">
               <div
-                className={`text-xl text-white uppercase font-normal bg-[${project.bgColor}] `}
+                className={`text-xl text-black uppercase font-normal bg-[${project.bgColor}] `}
               >
                 Project {project.name}
               </div>
-              <div className="h-full w-full border border-white"></div>
+              <div className="h-full w-full border border-black"></div>
             </div>
-            <div className="text-xl text-white font-normal text-right w-full">
+            <div className="text-xl text-black font-normal text-right w-full">
               case study.
             </div>
           </div>
@@ -249,7 +249,7 @@ const WorkSection = () => {
           <Link to={"/work"}>
             <div
               ref={buttonRef}
-              className="text-black bg-white px-10 py-3 opacity-0 hidden"
+              className="text-white bg-black px-10 py-3 opacity-0 hidden"
             >
               see all work.
             </div>

@@ -2,6 +2,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Over+the+Rainbow&display=swap");
 
 @import "tailwindcss";
+
+@font-face {
+  font-family: "Hipnouma";
+  src: url("../public/fonts/Hipnouma.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "seventy";
+  src: url("../public/fonts/seventy.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 html {
   box-sizing: border-box;
 }
@@ -11,12 +27,21 @@ body {
   max-width: 100vw !important;
   overflow-x: hidden;
   font-family: Cal Sans, sans-serif;
-  background-color: black;
+  background-color: #232323;
 }
 
 .outfit {
   font-family: Outfit, sans-serif;
 }
+
+.hipnouma {
+  font-family: "Hipnouma", sans-serif;
+}
+
+.seventy {
+  font-family: "seventy", sans-serif;
+}
+
 .handwritten {
   font-family: "Over the Rainbow", cursive;
 }

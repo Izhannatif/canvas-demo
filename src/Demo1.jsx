@@ -305,78 +305,78 @@ const PinnedScaleBox = () => {
   const mainHeading1Ref = useRef(null)
   const mainHeading2Ref = useRef(null)
   const mainHeading3Ref = useRef(null)
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "+=100%",
-          scrub: true,
-          pin: true,
-          onEnter: () => setShowBalatro(true),
-          onLeave: () => setShowBalatro(false),
-          onEnterBack: () => setShowBalatro(true),
-          onLeaveBack: () => setShowBalatro(false),
-          onUpdate: (self) => {
-            if (self.progress >= 1) {
-              setIsNavbarVisible(true)
-            } else {
-              setIsNavbarVisible(false)
-              setIsNavbarOpen(false)
-            }
-          },
-        },
-      })
+  // useEffect(() => {
+  //   const ctx = gsap.context(() => {
+  //     const tl = gsap.timeline({
+  //       scrollTrigger: {
+  //         trigger: sectionRef.current,
+  //         start: "top top",
+  //         end: "+=100%",
+  //         scrub: true,
+  //         pin: true,
+  //         onEnter: () => setShowBalatro(true),
+  //         onLeave: () => setShowBalatro(false),
+  //         onEnterBack: () => setShowBalatro(true),
+  //         onLeaveBack: () => setShowBalatro(false),
+  //         onUpdate: (self) => {
+  //           if (self.progress >= 1) {
+  //             setIsNavbarVisible(true)
+  //           } else {
+  //             setIsNavbarVisible(false)
+  //             setIsNavbarOpen(false)
+  //           }
+  //         },
+  //       },
+  //     })
 
-      tl.fromTo(
-        boxRef.current,
-        { scale: 0.25, opacity: 1 },
-        { opacity: 1, scale: 1, ease: "none" },
-        0
-      ),
-        tl.to(
-          mainHeading1Ref.current,
-          {
-            opacity: 0,
-            filter: "blur(10px)",
-            transformOrigin: "bottom",
-            ease: "none",
-          },
-          0
-        )
-      tl.to(
-        mainHeading2Ref.current,
-        {
-          opacity: 0,
-          filter: "blur(10px)",
-          transformOrigin: "top",
-          ease: "none",
-        },
-        0
-      )
-      tl.to(
-        mainHeading3Ref.current,
-        {
-          opacity: 0,
-          filter: "blur(10px)",
-          transformOrigin: "bottom",
-          ease: "none",
-        },
-        0
-      )
-    }, sectionRef)
+  //     tl.fromTo(
+  //       boxRef.current,
+  //       { scale: 0.25, opacity: 1 },
+  //       { opacity: 1, scale: 1, ease: "none" },
+  //       0
+  //     ),
+  //       tl.to(
+  //         mainHeading1Ref.current,
+  //         {
+  //           opacity: 0,
+  //           filter: "blur(10px)",
+  //           transformOrigin: "bottom",
+  //           ease: "none",
+  //         },
+  //         0
+  //       )
+  //     tl.to(
+  //       mainHeading2Ref.current,
+  //       {
+  //         opacity: 0,
+  //         filter: "blur(10px)",
+  //         transformOrigin: "top",
+  //         ease: "none",
+  //       },
+  //       0
+  //     )
+  //     tl.to(
+  //       mainHeading3Ref.current,
+  //       {
+  //         opacity: 0,
+  //         filter: "blur(10px)",
+  //         transformOrigin: "bottom",
+  //         ease: "none",
+  //       },
+  //       0
+  //     )
+  //   }, sectionRef)
 
-    return () => ctx.revert()
-  }, [])
+  //   return () => ctx.revert()
+  // }, [])
 
   return (
     <div>
       <section
-        ref={sectionRef}
-        className="h-screen w-screen flex flex-col items-center justify-center relative overflow-hidden bg-white border-none"
+        // ref={sectionRef}
+        className="h-screen w-screen flex flex-col items-center justify-center  overflow-hidden bg-white border-none"
       >
-        <div
+        {/* <div
           ref={boxRef}
           className="h-screen w-screen bg-[#fff] relative z-10 flex items-end p-10 border-[1px]"
           style={{
@@ -384,27 +384,19 @@ const PinnedScaleBox = () => {
           }}
         >
           <CursorTarget variant="waveText">
-            <p className="text-7xl md:text-9xl font-black">Hello.</p>
+            <p className="text-7xl md:text-9xl font-black ">Hello.</p>
           </CursorTarget>
-        </div>
+        </div> */}
 
-        {/* 👇 Conditionally mount Balatro */}
-        {/* {showBalatro && (
-          <Balatro
-            isRotate={false}
-            mouseInteraction={true}
-            pixelFilter={3000}
-          />
-        )} */}
-        <div className="absolute text-[15vw] md:text-[14vw] leading-loose md:leading-none left-5 text-transparent top-1/4 md:top-5 pointer-events-none font-black text-stroke-1">
-          <div ref={mainHeading1Ref} className="">
-            reimagining
-          </div>
-          <div ref={mainHeading2Ref} className="">
-            web
-          </div>
-          <div ref={mainHeading3Ref}>experiences.</div>
+        <div className="text-black text-[11vw] leading-[11vw] w-full px-10 ">
+          <p className="text-left">Breaking</p>
+          <p className="text-rigt">Things,</p>
+          <p className=" seventy opacity-80 pt-10">Professionally.</p>
         </div>
+        {/* <div className="absolute text-[15vw] md:text-[17vw] leading-loose md:leading-none left-2/7 text-white/10 uppercase top-1/4 md:top-5 pointer-events-none  hipnouma">
+        
+          <div ref={mainHeading3Ref}>Izhan Atif.</div>
+        </div> */}
       </section>
     </div>
   )

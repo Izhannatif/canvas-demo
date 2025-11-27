@@ -18,18 +18,6 @@ const ScrollLetterReveal = ({
 }) => {
   const containerRef = useRef(null)
 
-  //   const splitLetters = useMemo(() => {
-  //     const text = typeof children === 'string' ? children : '';
-  //     return text.split('').map((char, index) => (
-  //       <span
-  //         className="inline-block letter"
-  //         key={index}
-  //         style={{ color: baseColor }}
-  //       >
-  //         {char === ' ' ? '\u00A0' : char}
-  //       </span>
-  //     ));
-  //   }, [children, baseColor]);
   const splitLetters = useMemo(() => {
     const text = typeof children === "string" ? children : ""
     return text.split(" ").map((word, wordIndex) => (
