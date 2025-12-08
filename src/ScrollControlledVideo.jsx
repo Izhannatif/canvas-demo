@@ -91,17 +91,7 @@ const ScrollGsapVideo = () => {
             <ContactForm />
           </div>
         </div>
-        {/* <div className="w-full flex gap-5 justify-end items-center h-max px-10 text-white">
-          <div className="flex gap-3 items-center">
-            Email <ArrowUpRight />
-          </div>
-          <div className="flex gap-3 items-center">
-            LinkedIn <ArrowUpRight />
-          </div>
-          <div className="flex gap-3 items-center">
-            Instagram <ArrowUpRight />
-          </div>
-        </div> */}
+       
         <div className="w-full flex gap-5 justify-end items-center h-max px-10 text-white">
           {["Email", "LinkedIn", "Instagram"].map((text) => (
             <CursorTarget variant="button" key={text}>

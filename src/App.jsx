@@ -75,8 +75,8 @@ const config = {
     mixBlendMode: "difference",
   },
   workButton: {
-    width: 60,
-    height: 60,
+    width: 80,
+    height: 80,
     shape: "circle",
     color: "rgba(255, 255, 255, 1)",
     mixBlendMode: "difference",

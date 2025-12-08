@@ -4,6 +4,7 @@ import CreativeProcess from "../../CreativeProcess"
 import About from "./About"
 import WorkSection from "../../WorkSection"
 import CareerTimeline from "../../CareerJourney"
+import TextSection from "../../TextSection"
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <div></div>
       {/* <CareerTimeline /> */}
       <CreativeProcess />
+      <TextSection />
       <WorkSection />
       <Footer />
     </div>
@@ -20,7 +22,3 @@ const Home = () => {
 }
 
 export default Home
-
-{
-  /* I’m Izhan, a frontend developer and designer based in Karachi. I build fast, responsive websites with Next JS — focused on clean UI, smooth UX, and performance that scales. */
-}

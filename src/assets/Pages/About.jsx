@@ -1,30 +1,3 @@
-// import React, { useEffect } from "react"
-// import { useNavbar } from "../../NavbarContext"
-// import Footer from "../../Footer"
-
-// const About = () => {
-//   const { setIsNavbarVisible } = useNavbar()
-
-//   useEffect(() => {
-//     setIsNavbarVisible(true)
-//   }, [])
-
-//   return (
-//     <>
-//       <div className="bg-white h-max  min-w-screen border-x flex gap-0">
-//         <div className="w-1/2 h-screen bg-red-100"></div>
-//         <div className="w-1/2 h-screen bg-yellow-100"></div>
-//       </div>
-//     </>
-//   )
-// }
-
-// export default About
-
-// {
-//   /* <Footer /> */
-// }
-
 import React, { useEffect, useRef } from "react";
 import { useNavbar } from "../../NavbarContext";
 import gsap from "gsap";
@@ -110,7 +83,6 @@ const About = () => {
         ref={sectionRef}
         className="relative bg-white min-h-screen min-w-screen overflow-hidden border-x flex flex-col md:flex-row gap-0 "
       >
-        {/* Left Pane */}
         <div className="relative w-full flex items-center md:w-1/2 h-[50vh] md:h-screen bg-white overflow-hidden py-5 md:py-14">
           <div
             ref={leftOverlay}
@@ -133,7 +105,7 @@ const About = () => {
           </p>
           <p className="text-xl md:text-2xl px-5 leading-[1.5rem] md:leading-none ">
             At the end of the day, I’m just a builder, a learner, and someone
-            who occasionally breaks their own creations and calls it <i>work</i>.
+            who occasionally breaks his own creations and calls it <i>work</i>.
           </p>
           </div>
           <div className="absolute left-[60%] md:left-[88%] top-[85%] md:top-10  flex flex-row-reverse md:flex-col gap-0 md:gap-0">
@@ -147,7 +119,6 @@ const About = () => {
           </div>
         </div>
 
-        {/* Right Pane */}
         <div className="relative w-full md:w-1/2 h-[50vh] md:h-screen bg-yellow-100 overflow-hidden">
           <div
             ref={rightOverlay}
@@ -155,7 +126,6 @@ const About = () => {
             style={{ transformOrigin: "bottom", transform: "scaleY(1)" }}
           />
           <img
-            // src="https://charlesleclerc.com/wp-content/uploads/2025/02/Leclerc-Motorsport-03.jpg"
             src="./me3.png"
             alt=""
             className="object-cover object-top w-full h-full"

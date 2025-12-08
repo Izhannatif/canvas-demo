@@ -133,150 +133,148 @@
 
 // export default WorkSection
 
-import React, { useEffect, useRef } from "react"
-import { gsap } from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { CursorTarget } from "@izhann/react-cursor-fx"
-import { Link } from "react-router-dom"
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Cursor, CursorTarget } from "@izhann/react-cursor-fx";
+import { Link } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
 
 // Register ScrollTrigger plugin with GSAP
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 const WorkSection = () => {
-  const sectionRef = useRef(null)
-  const cardsRef = useRef([])
-  const buttonRef = useRef(null)
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Create a GSAP timeline for animations
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "+=2500",
-          scrub: true,
-          pin: true,
-        },
-      })
-
-      // Animate the cards to move from below and stagger their appearance
-      tl.fromTo(
-        cardsRef.current,
-        { y: "100vh", opacity: 0 }, // Start off-screen (below) and invisible
-        {
-          y: (index) => 50 * index,
-          opacity: 1,
-          stagger: 1, // Stagger the cards' appearance
-          ease: "power2.out", // Ease for smooth transition
-        }
-      )
-
-      tl.to(cardsRef.current, {
-        duration: 1,
-        // use a function to determine x and y for each card
-        x: (index) =>
-          index < 2
-            ? index === 0
-              ? "-250%"
-              : "-230%"
-            : index === 2
-            ? "150%"
-            : "130%",
-      })
-      tl.to(
-        cardsRef.current[2],
-        {
-          duration: 1,
-          y: 0,
-        },
-        "<"
-      )
-      tl.to(
-        cardsRef.current[3],
-        {
-          duration: 1,
-          y: 50,
-        },
-        "<"
-      )
-      tl.to(buttonRef.current, {
-        display: "block",
-        opacity: 1,
-        duration: 0.5,
-      })
-      tl.to({}, { duration: 1 })
-    }, sectionRef)
-
-    return () => ctx.revert() // Clean up the GSAP context
-  }, [])
+  const sectionRef = useRef(null);
 
   const projects = [
-    { name: "1", bgColor: "#fff" },
-    { name: "2", bgColor: "#fff" },
-    { name: "3", bgColor: "#fff" },
-    { name: "4", bgColor: "#fff" },
-  ]
+    {
+      name: "Digital Sponge",
+      bgColor: "#fff",
+      imgSrc: "/Digitalsponge.png",
+      webUrl: "https://digital-sponge2.vercel.app",
+      type:'Design Agency'
+    },
+    {
+      name: "Aarab Khan",
+      bgColor: "#fff",
+      imgSrc: "/aarabkhan.png",
+      webUrl: "https://aarabkhan2.vercel.app",
+      type:'Client Portfolio'
+    },
+    {
+      name: "Taurus Renewable Energy",
+      bgColor: "#fff",
+      imgSrc: "/TaurusRenewable.png",
+      webUrl: "https://darkslate-barracuda-899487.hostingersite.com",
+      type:'Corporate'
+    },
+    {
+      name: "777",
+      bgColor: "#fff",
+      imgSrc: "/nic777.png",
+      webUrl: "https://nic777.vercel.app",
+      type:'Product'
+    },
+    {
+      name: "XIMM",
+      bgColor: "#fff",
+      imgSrc: "/ximm.png",
+      webUrl: "https://ximm-official.vercel.app",
+      type:'Branding'
+    },
+    {
+      name: "Cursor FX",
+      bgColor: "#fff",
+      imgSrc: "/Digitalsponge.png",
+      webUrl: "https://react-cursorfx.vercel.app/",
+      type:'Open Source'
+    },
+  ];
 
   return (
     <section
       ref={sectionRef}
-      className="relative bg-white h-screen overflow-hidden w-screen"
+      className="relative bg-white  overflow-hidden w-screen flex justify-between flex-col"
     >
-      <h1 className="text-black px-2 text-7xl md:text-9xl  pb-0 pt-16 md:pt-0 seventy -rotate-6 mb-5">
-        my work
+      <h1 className="text-black px-2 text-7xl md:text-9xl  pb-0 pt-16 md:pt-0 seventy -rotate-6 mb-20">
+        Recent work
       </h1>
-      <div className="relative flex flex-col justify-center h-full items-center w-full">
-        {projects.map((project, index) => (
-          <div
-            key={index}
-            ref={(el) => (cardsRef.current[index] = el)}
-            className="bg-white w-[400px] h-[400px] md:w-[30vw] md:h-[50vh] opacity-0 transform absolute top-10 left-1/2 right-0 -translate-x-1/2 flex flex-col items-start justify-between text-xl font-semibold text-gray-700 border border-black py-3 px-5"
-          >
-            <div className="h-3/4 w-full flex flex-col gap-3">
-              <div
-                className={`text-xl text-black uppercase font-normal bg-[${project.bgColor}] `}
-              >
-                Project {project.name}
+      {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 py-10 px-10">
+        {projects &&
+          projects.map((project, index) => (
+            <div key={index}>
+              <div className=" border rounded-3xl">
+                <img className="rounded-3xl object-contain" src={project.imgSrc} alt="" />
+                <div className="flex justify-between items-end p-5">
+                  <div>
+                    <p className=" text-2xl">{project.name}</p>
+                    <p className="text-xs">Full case study coming soon.</p>
+                  </div>
+                  <CursorTarget variant="button">
+                    <a href={project.webUrl} target="_blank" rel="noreferrer">
+                      
+                      <ArrowUpRight
+                        size={35}
+                        className="border rounded-full p-1"
+                      />
+                    </a>
+                  </CursorTarget>
+                </div>
               </div>
-              <div className="h-full w-full border border-black"></div>
             </div>
-            <div className="text-xl text-black font-normal text-right w-full">
-              case study.
+          ))}
+      </div> */}
+      <div className="flex-col flex gap-10 py-10 px-10">
+        {projects &&
+          projects.map((project, index) => (
+            <div className="h-max w-full border-b pb-10" key={index}>
+              <div className="flex flex-col justify-between h-full">
+                <div className="grid grid-cols-2">
+                  <div className="flex justify-between items-end p-10">
+                    <div>
+                      <p className=" text-4xl uppercase">{project.name}</p>
+                      <p className="text-xs">Full case study coming soon.</p>
+                    </div>
+                    <CursorTarget variant="button">
+                      <a href={project.webUrl} target="_blank" rel="noreferrer">
+                        <ArrowUpRight
+                          size={35}
+                          className="border rounded-full p-1"
+                        />
+                      </a>
+                    </CursorTarget>
+                  </div>
+                  <div className="p-10">
+                    <p className="text-xl">
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                      Distinctio totam sunt aut quidem quos fugit, et similique.
+                      Nisi debitis similique ratione doloribus asperiores sint
+                      voluptatibus quo, repudiandae eum vero delectus?
+                    </p>
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 ">
+                  <div className="self-end p-10">
+                    <p>Tech Stack:</p>
+                    <p>React JSX</p>
+                    <p>Headless Wordpress CMS</p>
+                    <p>GSAP</p>
+                    <p>Framer Motion</p>
+                    <p>Vercel Deployment</p>
+                  </div>
+
+                  <img
+                    className="rounded-3xl object-contain "
+                    src={project.imgSrc}
+                    alt=""
+                  />
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
-        <CursorTarget variant="workButton">
-          <Link to={"/work"}>
-            <div
-              ref={buttonRef}
-              className="text-white bg-black px-10 py-3 opacity-0 hidden"
-            >
-              see all work.
-            </div>
-          </Link>
-        </CursorTarget>
+          ))}
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default WorkSection
-
-//   tl.to(cardsRef.current[0], {
-//     x: "-150%",
-//     duration: 1,
-//   })
-//   tl.to(cardsRef.current[1], {
-//     x: "-130%",
-//     duration: 1,
-//   })
-//   tl.to(cardsRef.current[2], {
-//     y: 0,
-//     x: "150%",
-//     duration: 1,
-//   })
-//   tl.to(cardsRef.current[3], {
-//     y: 50,
-//     x: "130%",
-//     duration: 1,
-//   })
+export default WorkSection;
